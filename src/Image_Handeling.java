@@ -6,7 +6,7 @@ IMAGE INSERT IN DATABASE AND EXTRACT FROM DATABASE IN JDBC
 import java.io.*;
 import java.sql.*;
 
-public class Main {
+public class Image_Handeling {                           
     public static void main(String[] args) throws ClassNotFoundException {
 
         String url = "jdbc:mysql://localhost:3306/mydatabase";
@@ -21,9 +21,10 @@ public class Main {
             Class.forName("com.mysql.cj.jdbc.Driver");
             System.out.println("Driver load!!!");
         } catch (ClassNotFoundException e) {
-            System.out.println(e.getMessage());
-        }
+            System.out.println(e.getMessage());              
 
+        }
+                
         try {
             Connection con = DriverManager.getConnection(url, username, Password);
             System.out.println("Connection Successfully");
@@ -41,7 +42,6 @@ public class Main {
 //            }
 
             PreparedStatement preparedStatement = con.prepareStatement(Query);
-            Statement smt = con.createStatement();
             preparedStatement.setInt(1,1);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -51,12 +51,12 @@ public class Main {
                 OutputStream outputStream = new FileOutputStream(image_path);
                 outputStream.write(image_data);
                 System.out.println("Image extract Successfully");
+                outputStream.close();
             } else {
                 System.out.println("Image Not Found");
             }
 
-
-
+            
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());

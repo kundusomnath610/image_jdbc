@@ -1,4 +1,4 @@
-//-- Active: 1707299025167@@127.0.0.1@3306@mydatabase
+// -- Active: 1707299025167@@127.0.0.1@3306@mydatabase
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -57,6 +57,8 @@ public class Batch_Processing {
             int[] batchResult = preparedStatement.executeBatch();
             connection.commit();
             System.out.println("Batched run sucessfully");
+
+            
             
 
 
